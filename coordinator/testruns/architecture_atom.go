@@ -295,7 +295,7 @@ func (t *TestRunManager) CreateStartSequenceAtomizer(
 	// Start all sentinels
 	startSequence = append(startSequence, startSequenceEntry{
 		roles:       t.GetAllRolesSorted(tr, common.SystemRoleSentinel),
-		timeout:     roleStartTimeout,
+		timeout:     shardTimeout,
 		waitForPort: []PortIncrement{PortIncrementDefaultPort},
 	})
 
