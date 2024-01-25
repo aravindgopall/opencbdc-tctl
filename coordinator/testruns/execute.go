@@ -100,6 +100,7 @@ func (t *TestRunManager) ExecuteTestRun(tr *common.TestRun) {
 			if err != errAbortedWhilePreseeding {
 				t.FailTestRun(tr, fmt.Errorf("Preseeding failed: %v", err))
 			}
+			t.WriteLog(tr, "Error checking preseeding: %v", err)
 			return
 		}
 	}

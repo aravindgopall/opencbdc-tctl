@@ -240,13 +240,16 @@ func (t *TestRunManager) CheckPreseed(tr *common.TestRun, cfg []byte) error {
 		TestRunID:  tr.ID,
 	}
 	hasSeed, err := t.awsm.HasSeed(wantSeed, false)
+	t.WriteLog(tr, "HasSeed shards: %t", hasSeed)
 	if err != nil {
 		return fmt.Errorf("error checking preseed existence: %v", err)
 	}
 
 	if !hasSeed {
 		t.UpdateStatus(tr, common.TestRunStatusRunning, "Generating preseed")
+		t.WriteLog(tr, "Generating preseed")
 		hasSeed, err := t.awsm.HasSeed(wantSeed, true)
+		t.WriteLog(tr, "HasSeed shards: %t", hasSeed)
 		if err != nil {
 			return fmt.Errorf("error checking preseed existence: %v", err)
 		}
