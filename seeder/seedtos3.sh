@@ -41,7 +41,6 @@ else
     elif [ ! -z "$SEED_CONFIG_S3URI" ]; then
         echo "Downloading configuration from S3: $SEED_CONFIG_S3URI"
         aws s3 cp "$SEED_CONFIG_S3URI" ./config.cfg
-        cat ./config.cfg
     else
         echo "Generating config file locally - will not work for sentinel attestation code"
         # Generate it - doesn't work for sentinel attestations
